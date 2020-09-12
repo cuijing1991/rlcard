@@ -17,6 +17,14 @@ if 'tensorflow' in installed_packages:
     register(
         model_id = 'leduc-holdem-nfsp',
         entry_point='rlcard.models.pretrained_models:LeducHoldemNFSPModel')
+    
+    register(
+        model_id='doudizhu-dqn',
+        entry_point='rlcard.models.pretrained_models:DoudizhuDQNModel')
+    
+    register(
+        model_id='doudizhu-nfsp',
+        entry_point='rlcard.models.pretrained_models:DoudizhuNFSPModel')
 
 if 'torch' in installed_packages:
     register(
