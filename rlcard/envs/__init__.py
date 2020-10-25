@@ -48,3 +48,8 @@ register(
     env_id='gin-rummy',
     entry_point='rlcard.envs.gin_rummy:GinRummyEnv',
 )
+
+register(
+    env_id='rankup',
+    entry_point='rlcard.envs.rankup:RankupEnv',
+)

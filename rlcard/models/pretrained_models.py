@@ -192,3 +192,44 @@ class DoudizhuNFSPModel(Model):
               functioning well.
         '''
         return self.nfsp_agents
+
+class RankupDQNModel(Model):
+    ''' A pretrained model on Rankup with DQN
+    '''
+
+    def __init__(self):
+        ''' Load pretrained model
+        '''
+        import tensorflow as tf
+        from rlcard.agents import DQNAgent
+        self.graph = tf.Graph()
+        self.sess = tf.Session(graph=self.graph)
+
+        env = rlcard.make('rankup')
+
+        with self.graph.as_default():
+            self.dqn_agents = []
+            agent = DQNAgent(self.sess,
+                              scope='dqn',
+                              action_num=env.action_num,
+                              state_shape=env.state_shape,
+                              mlp_layers=[520,260])
+            self.dqn_agents.append(agent)
+ 
+
+        check_point_path = os.path.join(ROOT_PATH, 'rankup_dqn')
+        with self.sess.as_default():
+            with self.graph.as_default():
+                saver = tf.train.Saver()
+                saver.restore(self.sess, tf.train.latest_checkpoint(check_point_path))
+    @property
+    def agents(self):
+        ''' Get a list of agents for each position in a the game
+
+        Returns:
+            agents (list): A list of agents
+
+        Note: Each agent should be just like RL agent with step and eval_step
+              functioning well.
+        '''
+        return self.dqn_agents

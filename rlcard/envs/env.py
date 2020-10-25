@@ -218,9 +218,15 @@ class Env(object):
         payoffs = self.get_payoffs()
 
         # Reorganize the trajectories
-        trajectories = reorganize(trajectories, payoffs)
+        trajectories = self.compute_transition_trajectories(trajectories, payoffs)
 
         return trajectories, payoffs
+    
+    def compute_transition_trajectories(self, trajectories, payoffs):
+        '''
+            Reorganize trajectories in the format of (state, action, reward, next_state, is_done)
+        '''
+        return reorganize(trajectories, payoffs)
 
     def is_over(self):
         ''' Check whether the curent game is over

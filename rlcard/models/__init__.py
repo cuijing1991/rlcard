@@ -25,6 +25,10 @@ if 'tensorflow' in installed_packages:
     register(
         model_id='doudizhu-nfsp',
         entry_point='rlcard.models.pretrained_models:DoudizhuNFSPModel')
+    
+    register(
+        model_id='rankup-dqn',
+        entry_point='rlcard.models.pretrained_models:RankupDQNModel')
 
 if 'torch' in installed_packages:
     register(

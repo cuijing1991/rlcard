@@ -25,3 +25,4 @@ from rlcard.agents.blackjack_human_agent import HumanAgent as BlackjackHumanAgen
 from rlcard.agents.random_agent import RandomAgent
 from rlcard.agents.uno_human_agent import HumanAgent as UnoHumanAgent
 from rlcard.agents.doudizhu_human_agent import HumanAgent as DoudizhuHumanAgent
+from rlcard.agents.rankup_human_agent import HumanAgent as RankupHumanAgent
